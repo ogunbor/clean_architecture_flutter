@@ -8,6 +8,8 @@ import 'sign_in_bloc.dart';
 import 'sign_in_event.dart';
 
 class SignInPage extends StatelessWidget {
+  const SignInPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -17,16 +19,16 @@ class SignInPage extends StatelessWidget {
   }
 
   Widget _buildPage(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
-    GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+    GlobalKey<FormState> formKey = GlobalKey<FormState>();
     final bloc = BlocProvider.of<SignInBloc>(context);
 
     return Scaffold(
       body: BlocBuilder<SignInBloc, SignInState>(
         builder: (context, state) {
           if (state.isLogedIn == true) {
-            Future.delayed(Duration(milliseconds: 300), () {
+            Future.delayed(const Duration(milliseconds: 300), () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (ctx) =>
                       WelcomeScreen(name: state.email ?? "email@test.com")));
@@ -35,14 +37,14 @@ class SignInPage extends StatelessWidget {
           return Center(
             child: SingleChildScrollView(
               child: Form(
-                key: _formKey,
+                key: formKey,
                 child: Padding(
                   padding: const EdgeInsets.all(22.0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     //crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Text(
+                      const Text(
                         "Sign In",
                         textAlign: TextAlign.center,
                         style: TextStyle(
@@ -50,10 +52,10 @@ class SignInPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12.0,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Icon(
@@ -73,11 +75,11 @@ class SignInPage extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 12.0,
                       ),
                       TextFormField(
-                        controller: _emailController,
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         validator: (email) {
                           if (email == null ||
@@ -87,7 +89,7 @@ class SignInPage extends StatelessWidget {
                           }
                           return null;
                         },
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "Email",
                           errorStyle: TextStyle(
                               color: Colors.red,
@@ -96,11 +98,11 @@ class SignInPage extends StatelessWidget {
                           border: OutlineInputBorder(),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8.0,
                       ),
                       TextFormField(
-                        controller: _passwordController,
+                        controller: passwordController,
                         keyboardType: TextInputType.text,
                         validator: (password) {
                           if (password == null || password.length < 6) {
@@ -109,7 +111,7 @@ class SignInPage extends StatelessWidget {
                           return null;
                         },
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: "Password",
                           errorStyle: TextStyle(
                               color: Colors.red,
@@ -118,32 +120,32 @@ class SignInPage extends StatelessWidget {
                           border: OutlineInputBorder(),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20.0,
                       ),
-                      Text(
+                      const Text(
                         "Forgot Your Password",
                         style: TextStyle(color: Colors.grey, fontSize: 18.0),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 8.0,
                       ),
                       InkWell(
                         onTap: () {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            _formKey.currentState?.save();
+                          if (formKey.currentState?.validate() ?? false) {
+                            formKey.currentState?.save();
                             bloc.add(SignInTriggerEvent(
-                                email: _emailController.text));
+                                email: emailController.text));
                           }
                         },
                         child: Container(
                           height: 50.0,
                           width: 180.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Colors.deepOrange,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(22.0))),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               "SIGN IN",
                               style: TextStyle(

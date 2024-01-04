@@ -7,6 +7,6 @@ class PersonDTO {
   }
 
   Map<String, String> toJson() => {
-        "email": this.email ?? "",
+        "email": email ?? "",
       };
 }

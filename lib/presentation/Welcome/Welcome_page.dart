@@ -16,16 +16,16 @@ class WelcomeScreen extends StatelessWidget {
             Text(
               "Hello, $name!",
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 40.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 12.0,
             ),
-            Text(
+            const Text(
               "Want to join Us ?",
               style: TextStyle(
                 color: Colors.white,
@@ -33,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.w300,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             InkWell(
@@ -41,12 +41,12 @@ class WelcomeScreen extends StatelessWidget {
                 height: 50.0,
                 width: 180.0,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(22.0)),
+                    borderRadius: const BorderRadius.all(Radius.circular(22.0)),
                     border: Border.all(
                       color: Colors.white,
                       width: 0.5,
                     )),
-                child: Center(
+                child: const Center(
                   child: Text(
                     "SIGN UP",
                     style: TextStyle(
